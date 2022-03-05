@@ -1,4 +1,4 @@
-package com.example.jast;
+package com.example.jast.s02;
 
 import java.util.Arrays;
 import java.util.stream.DoubleStream;

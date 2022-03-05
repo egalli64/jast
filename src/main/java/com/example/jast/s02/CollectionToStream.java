@@ -1,4 +1,4 @@
-package com.example.jast;
+package com.example.jast.s02;
 
 import java.util.Collection;
 import java.util.List;
