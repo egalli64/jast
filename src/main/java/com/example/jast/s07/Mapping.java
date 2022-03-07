@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-public class StreamMapExample {
+public class Mapping {
     public static void main(String[] args) {
         List<Dog> dogs = List.of( //
                 new Dog("Bob", "Robert Redford"), //

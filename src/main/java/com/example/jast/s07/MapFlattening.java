@@ -3,7 +3,7 @@ package com.example.jast.s07;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class StreamMapFlatteningExample {
+public class MapFlattening {
     public static void main(String[] args) {
         List<Integer> li1 = List.of(4, 45, 49, 18);
         System.out.println("list one: " + li1);
