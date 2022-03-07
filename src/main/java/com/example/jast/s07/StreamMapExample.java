@@ -1,4 +1,4 @@
-package com.example.jast.s06;
+package com.example.jast.s07;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -7,7 +7,7 @@ import java.util.List;
 public class StreamMapExample {
     public static void main(String[] args) {
         List<Dog> dogs = List.of( //
-                new Dog("Red", "Robert Redford"), //
+                new Dog("Bob", "Robert Redford"), //
                 new Dog("Zip", "Val Kilmer"), //
                 new Dog("Fido", "Andrew Scott") //
         );
