@@ -1,8 +1,8 @@
-package com.example.jast.s05;
+package com.example.jast.s04;
 
 import java.util.List;
 
-public class Terminal {
+public class SimpleTerminal {
     public static void main(String[] args) {
         List<Integer> values = List.of(11, 34, 2);
 

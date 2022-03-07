@@ -1,4 +1,4 @@
-package com.example.jast.s04;
+package com.example.jast.s03;
 
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;

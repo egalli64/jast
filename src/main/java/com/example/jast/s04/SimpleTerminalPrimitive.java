@@ -1,8 +1,8 @@
-package com.example.jast.s05;
+package com.example.jast.s04;
 
 import java.util.Arrays;
 
-public class TerminalPrimitive {
+public class SimpleTerminalPrimitive {
     public static void main(String[] args) {
         int[] values = { 11, 34, 2 };
 
