@@ -1,0 +1,86 @@
+package com.example.jast.s13;
+
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+public class Grouping {
+    private static final Function<Dog, Weight> dogWeight = dog -> {
+        double current = dog.weight();
+        if (current < 3) {
+            return Weight.LIGHT;
+        } else if (current < 10) {
+            return Weight.MEDIUM;
+        } else {
+            return Weight.HEAVY;
+        }
+    };
+
+    private static final Predicate<Dog> isYoung = dog -> dog.age() < 5;
+
+    public static void main(String[] args) {
+        List<Dog> dogs = List.of( //
+                new Dog("Bob", "Tom Hanks", 7, 12.5), new Dog("Tom", "Bob Marley", 5, 4.3), //
+                new Dog("Kim", "Wim Wenders", 4, 8.1), new Dog("Kim", "Tom Hanks", 3, 2.5) //
+        );
+        System.out.println("Dogs: " + dogs);
+        System.out.println("---");
+
+        System.out.println("Grouping by owner");
+        var groupedByOwner = dogs.stream().collect(Collectors.groupingBy(Dog::owner));
+        for (var entry : groupedByOwner.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+        System.out.println("---");
+
+        System.out.println("Grouping by weight (external function)");
+        var groupedByWeight = dogs.stream().collect(Collectors.groupingBy(dogWeight));
+        for (var entry : groupedByWeight.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+        System.out.println("---");
+
+        // filter then grouping
+        System.out.println("Filtering the young ones then grouping by owner");
+        Map<String, List<Dog>> youngDogsByOwner = dogs.stream().filter(isYoung) //
+                .collect(Collectors.groupingBy(Dog::owner));
+        for (var entry : youngDogsByOwner.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+        System.out.println("---");
+
+        // grouping then filtering
+        System.out.println("Grouping by owner then filtering the young ones");
+        Map<String, List<Dog>> youngDogsByAllOwner = dogs.stream() //
+                .collect(Collectors.groupingBy(Dog::owner, Collectors.filtering(isYoung, Collectors.toList())));
+        for (var entry : youngDogsByAllOwner.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+        System.out.println("---");
+
+        // grouping and counting
+        Map<String, Long> countDogsByOwner = dogs.stream()
+                .collect(Collectors.groupingBy(Dog::owner, Collectors.counting()));
+        System.out.println("Counting dogs by owner: " + countDogsByOwner);
+        System.out.println("---");
+
+        // grouping then grouping
+        Map<String, Map<Weight, List<Dog>>> dogsByOwnerAndWeight = dogs.stream()
+                .collect(Collectors.groupingBy(Dog::owner, Collectors.groupingBy(dogWeight)));
+        System.out.println("Dogs by owner and weight: " + dogsByOwnerAndWeight);
+
+        // partitioning
+        Map<Boolean, List<Dog>> dogsByAge = dogs.stream().collect(Collectors.partitioningBy(isYoung));
+        System.out.println("Dogs partitioned by age: " + dogsByAge);
+
+        // just filtering
+        System.out.println("Only young dogs: " + dogs.stream().filter(isYoung).collect(Collectors.toList()));
+
+        // partitioning then grouping
+        Map<Boolean, Map<Weight, List<Dog>>> dogsByKimNameAndOwner = dogs.stream()
+                .collect(Collectors.partitioningBy(isYoung, Collectors.groupingBy(dogWeight)));
+        System.out.println("Dogs partitioned by age and weight: " + dogsByKimNameAndOwner);
+    }
+}
