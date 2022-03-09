@@ -1,4 +1,4 @@
-package com.example.jast.s07;
+package com.example.jast.s08;
 
 public record Dog(String name, String owner) implements Comparable<Dog> {
     @Override
