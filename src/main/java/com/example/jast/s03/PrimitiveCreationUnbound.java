@@ -1,8 +1,16 @@
+/*
+ * Introduction to Stream in Java
+ * 
+ * https://github.com/egalli64/jast
+ */
 package com.example.jast.s03;
 
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
+/**
+ * Creating unbounded primitive streams by iterate and generate
+ */
 public class PrimitiveCreationUnbound {
     public static void main(String[] args) {
         System.out.println("The even numbers - size limited five");

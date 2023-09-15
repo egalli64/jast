@@ -1,7 +1,15 @@
+/*
+ * Introduction to Stream in Java
+ * 
+ * https://github.com/egalli64/jast
+ */
 package com.example.jast.s03;
 
 import java.util.stream.IntStream;
 
+/**
+ * Complex primitive stream generation by Stream::builder()
+ */
 public class StreamBuilder {
     public static void main(String[] args) {
         IntStream.Builder builder = IntStream.builder();

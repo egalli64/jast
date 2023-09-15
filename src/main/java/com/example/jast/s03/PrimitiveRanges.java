@@ -1,8 +1,16 @@
+/*
+ * Introduction to Stream in Java
+ * 
+ * https://github.com/egalli64/jast
+ */
 package com.example.jast.s03;
 
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
+/**
+ * Creating ranged primitive streams
+ */
 public class PrimitiveRanges {
     public static void main(String[] args) {
         System.out.println("Right open range on primitive int stream [40..43)");
