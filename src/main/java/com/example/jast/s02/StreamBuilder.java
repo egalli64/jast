@@ -1,8 +1,16 @@
+/*
+ * Introduction to Stream in Java
+ * 
+ * https://github.com/egalli64/jast
+ */
 package com.example.jast.s02;
 
 import java.util.stream.Stream;
 import java.util.stream.Stream.Builder;
 
+/**
+ * Complex stream generation by Stream::builder()
+ */
 public class StreamBuilder {
     public static void main(String[] args) {
         Builder<String> builder = Stream.builder();

@@ -1,7 +1,15 @@
+/*
+ * Introduction to Stream in Java
+ * 
+ * https://github.com/egalli64/jast
+ */
 package com.example.jast.s02;
 
 import java.util.stream.Stream;
 
+/**
+ * Creating unbounded streams by iterate and generate
+ */
 public class CreationUnbound {
     public static void main(String[] args) {
         System.out.println("The even numbers - size limited five");
