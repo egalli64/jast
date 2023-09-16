@@ -1,8 +1,16 @@
+/*
+ * Introduction to Stream in Java
+ * 
+ * https://github.com/egalli64/jast
+ */
 package com.example.jast.s08;
 
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+ * Flat map examples
+ */
 public class MapFlat {
     public static void main(String[] args) {
         List<Integer> li1 = List.of(4, 45, 18);
@@ -26,12 +34,5 @@ public class MapFlat {
         System.out.print("This is better: ");
         Stream.of(data).flatMap(Stream::ofNullable).forEach(System.out::print);
         System.out.println("\n---");
-
-        System.out.println("Cartesian product");
-        li1.stream().sorted() //
-                .flatMap(i -> li2.stream().sorted().map(j -> new Pair(i, j))) //
-                .forEach(System.out::println);
-        System.out.println("---");
     }
-
 }
