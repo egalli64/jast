@@ -1,8 +1,18 @@
+/*
+ * Introduction to Stream in Java
+ * 
+ * https://github.com/egalli64/jast
+ */
 package com.example.jast.s10;
 
 import java.util.List;
 import java.util.Set;
 
+import com.example.jast.dto.Dog;
+
+/**
+ * Collecting using a specialized collector
+ */
 public class Main {
     public static void main(String[] args) {
         List<Dog> dogs = List.of( //
@@ -20,5 +30,4 @@ public class Main {
         System.out.println("Owners are: " + owners);
         System.out.println("---");
     }
-
 }
