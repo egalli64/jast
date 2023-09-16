@@ -8,18 +8,18 @@ package com.example.jast.s05;
 import java.util.Comparator;
 import java.util.List;
 
-import com.example.jast.dto.Dog;
+import com.example.jast.dto.DogBean;
 
 /**
  * Stateful intermediate sort: standard, by comparator (lambda and
- * Comparator::comparing) - using a record as base class
+ * Comparator::comparing) - Using a JavaBean as base class
  */
-public class Sorting {
+public class SortingBean {
     public static void main(String[] args) {
-        List<Dog> dogs = List.of( //
-                new Dog("Bob", "Robert Redford"), //
-                new Dog("Al", "Val Kilmer"), //
-                new Dog("Fido", "Andrew Scott") //
+        List<DogBean> dogs = List.of( //
+                new DogBean("Bob", "Robert Redford"), //
+                new DogBean("Al", "Val Kilmer"), //
+                new DogBean("Fido", "Andrew Scott") //
         );
 
         System.out.println("A few dogs: " + dogs);
@@ -30,11 +30,11 @@ public class Sorting {
         System.out.println("---");
 
         System.out.println("Sort the dogs by owner, then print each of them");
-        dogs.stream().sorted((l, r) -> l.owner().compareTo(r.owner())).forEach(System.out::println);
+        dogs.stream().sorted((l, r) -> l.getOwner().compareTo(r.getOwner())).forEach(System.out::println);
         System.out.println("---");
 
         System.out.println("Sort the dogs by owner using Comparator.comparing(), then print each of them");
-        dogs.stream().sorted(Comparator.comparing(Dog::owner)).forEach(System.out::println);
+        dogs.stream().sorted(Comparator.comparing(DogBean::getOwner)).forEach(System.out::println);
         System.out.println("---");
     }
 }

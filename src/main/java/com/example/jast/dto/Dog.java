@@ -3,10 +3,10 @@
  * 
  * https://github.com/egalli64/jast
  */
-package com.example.jast.s05;
+package com.example.jast.dto;
 
 /**
- * A comparable DTO: compare name first, then owner
+ * A modern (JDK 14+) comparable dog, name first, then owner
  */
 public record Dog(String name, String owner) implements Comparable<Dog> {
     @Override
