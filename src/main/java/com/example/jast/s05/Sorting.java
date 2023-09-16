@@ -1,8 +1,16 @@
+/*
+ * Introduction to Stream in Java
+ * 
+ * https://github.com/egalli64/jast
+ */
 package com.example.jast.s05;
 
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Stateful intermediate sort: standard, by comparator (lambda and Comparator::comparing)
+ */
 public class Sorting {
     public static void main(String[] args) {
         List<Dog> dogs = List.of( //

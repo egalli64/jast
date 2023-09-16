@@ -1,9 +1,17 @@
+/*
+ * Introduction to Stream in Java
+ * 
+ * https://github.com/egalli64/jast
+ */
 package com.example.jast.s05;
 
 import java.util.List;
 
 import java.util.Comparator;
 
+/**
+ * Mixing stateful operators
+ */
 public class VariousCombinations {
     public static void main(String[] args) {
         List<Integer> values = List.of(1, 3, 2, 1, 5, 2);
