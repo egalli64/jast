@@ -1,7 +1,16 @@
+/*
+ * Introduction to Stream in Java
+ * 
+ * https://github.com/egalli64/jast
+ */
 package com.example.jast.s09;
 
 import java.util.List;
 
+/**
+ * Folding a stream by reduce with lambda or method reference, with seed or
+ * returning an optional. Plus, two specialized reducer: sum and count
+ */
 public class Reduce {
     public static void main(String[] args) {
         List<Integer> data = List.of(4, 2, 5, 23, 54, 11, 67, 100, 15, 83, 45);
