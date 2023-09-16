@@ -1,7 +1,15 @@
+/*
+ * Introduction to Stream in Java
+ * 
+ * https://github.com/egalli64/jast
+ */
 package com.example.jast.s07;
 
 import java.util.List;
 
+/**
+ * Terminal operations: findAny, findFirst
+ */
 public class Finding {
     public static void main(String[] args) {
         List<Integer> data = List.of(4, 2, 5, 23, 54, 11, 67, 100, 15, 83, 45);
