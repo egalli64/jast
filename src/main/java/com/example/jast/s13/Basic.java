@@ -1,3 +1,8 @@
+/*
+ * Introduction to Stream in Java
+ * 
+ * https://github.com/egalli64/jast
+ */
 package com.example.jast.s13;
 
 import java.util.List;
@@ -5,19 +10,22 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
+/**
+ * Introduction to grouping by collector
+ */
 public class Basic {
     public static void main(String[] args) {
         List<Integer> values = List.of(4, 2, 5, -23, 54, -11, 67, -99, 5, -23, 54);
         System.out.println("Values: " + values);
 
-        System.out.println("Grouped by signum:");
+        System.out.println("Grouped by signum in a map Integer to List:");
         var bySign = values.stream().collect(Collectors.groupingBy(Integer::signum));
         for (var entry : bySign.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
         System.out.println("---");
 
-        System.out.println("Grouped by signum in a TreeSet:");
+        System.out.println("Grouped by signum in a map Integer to TreeSet:");
         var bySignOrederedNoDuplicates = values.stream()
                 .collect(Collectors.groupingBy(Integer::signum, Collectors.toCollection(TreeSet::new)));
         for (var entry : bySignOrederedNoDuplicates.entrySet()) {
@@ -25,7 +33,7 @@ public class Basic {
         }
         System.out.println("---");
 
-        System.out.println("Grouped by signum then parity:");
+        System.out.println("Grouped by signum then parity, map Integer to map boolean to List:");
         var bySignThenParity = values.stream()
                 .collect(Collectors.groupingBy(Integer::signum, Collectors.groupingBy(x -> x % 2 == 0)));
         for (var entry : bySignThenParity.entrySet()) {
