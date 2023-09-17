@@ -12,6 +12,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import com.example.jast.dto.DogExt;
+import com.example.jast.dto.Weight;
 
 /**
  * Grouping on user record
@@ -83,14 +84,14 @@ public class Grouping {
 
         // partitioning
         Map<Boolean, List<DogExt>> dogsByAge = dogs.stream().collect(Collectors.partitioningBy(isYoung));
-        System.out.println("Dogs partitioned by age: " + dogsByAge);
+        System.out.println("\nDogs partitioned by age: " + dogsByAge);
 
         // just filtering
-        System.out.println("Only young dogs: " + dogs.stream().filter(isYoung).collect(Collectors.toList()));
+        System.out.println("\nOnly young dogs: " + dogs.stream().filter(isYoung).collect(Collectors.toList()));
 
         // partitioning then grouping
         Map<Boolean, Map<Weight, List<DogExt>>> dogsByKimNameAndOwner = dogs.stream()
                 .collect(Collectors.partitioningBy(isYoung, Collectors.groupingBy(dogWeight)));
-        System.out.println("Dogs partitioned by age and weight: " + dogsByKimNameAndOwner);
+        System.out.println("\nDogs partitioned by age and weight: " + dogsByKimNameAndOwner);
     }
 }

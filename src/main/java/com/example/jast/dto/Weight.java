@@ -3,11 +3,11 @@
  * 
  * https://github.com/egalli64/jast
  */
-package com.example.jast.s13;
+package com.example.jast.dto;
 
 /**
- * Dogs are partitioned in these categories
+ * Categories for dog partitioning 
  */
-enum Weight {
+public enum Weight {
     LIGHT, MEDIUM, HEAVY
 }

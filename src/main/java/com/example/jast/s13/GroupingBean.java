@@ -12,6 +12,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import com.example.jast.dto.DogExtBean;
+import com.example.jast.dto.Weight;
 
 /**
  * Grouping on user bean
@@ -64,7 +65,8 @@ public class GroupingBean {
         // grouping then filtering
         System.out.println("Grouping by owner then filtering the young ones");
         Map<String, List<DogExtBean>> youngDogsByAllOwner = dogs.stream() //
-                .collect(Collectors.groupingBy(DogExtBean::getOwner, Collectors.filtering(isYoung, Collectors.toList())));
+                .collect(Collectors.groupingBy(DogExtBean::getOwner,
+                        Collectors.filtering(isYoung, Collectors.toList())));
         for (var entry : youngDogsByAllOwner.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
