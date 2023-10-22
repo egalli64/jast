@@ -27,12 +27,12 @@ public class Partitioning {
             return Weight.MEDIUM;
         } else {
             return Weight.HEAVY;
-        }
+        }        
     };
 
     private static final Predicate<DogExt> isYoung = dog -> dog.age() < 5;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {        
         DogExt[] dogs = { //
                 new DogExt("Bob", "Tom Hanks", 7, 12.5), //
                 new DogExt("Tom", "Bob Marley", 5, 4.3), //

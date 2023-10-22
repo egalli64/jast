@@ -16,7 +16,7 @@ public class PrimitiveRanges {
         System.out.println("Right open range on primitive int stream [40..43)");
         IntStream.range(40, 43).forEach(System.out::println);
 
-        System.out.println("Closed range on primitive long stream [40..43)");
+        System.out.println("Closed range on primitive long stream [9223372036854775805..9223372036854775807]");
         LongStream.rangeClosed(Long.MAX_VALUE - 2, Long.MAX_VALUE).forEach(System.out::println);
     }
 }
