@@ -1,11 +1,9 @@
 /*
- * Introduction to Functional Programming with Java
+ * Introduction to Stream in Java
  * 
- * Module 1 - Stream
- * 
- * https://github.com/egalli64/jafun
+ * https://github.com/egalli64/jast
  */
-package com.example.jast.m1;
+package com.example.jast.m1.s1;
 
 import java.util.Collection;
 import java.util.List;
