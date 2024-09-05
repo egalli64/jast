@@ -3,7 +3,7 @@
  * 
  * https://github.com/egalli64/jast
  */
-package com.example.jast.s02;
+package com.example.jast.m1.s3;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
@@ -11,10 +11,10 @@ import java.util.stream.Stream;
 /**
  * How to stream a partial array
  */
-public class ArrayRangeToStream {
+public class ArrayToStream3Range {
     public static void main(String[] args) {
         String[] data = { "not interesting", "first", "second", "third", "not interesting" };
-        System.out.println("Array -> Stream on a range in the array -> operate on it");
+        System.out.println("Array -> Stream on a range in the array -> operate on it:");
         Stream<String> stream = Arrays.stream(data, 1, data.length - 1);
         stream.forEach(System.out::println);
     }
