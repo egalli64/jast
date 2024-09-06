@@ -32,14 +32,18 @@ public class StreamFactories {
         Stream.of(null, 12).forEach(System.out::println);
         System.out.println("---");
 
-        // of() with a single null could be tricky (and dangerous)
-        // an explicit cast helps the compiler understand what we really want
-        System.out.println("Passing only a null to of() could lead to unexpected behavior:");
+        System.out.println("Passing an array to of() works in a reasonable way:");
+        Stream.of(new Integer[] { 42, null }).forEach(System.out::println);
+        System.out.println("---");
+
+        // of() with a single null is interpreted as a null array!
+        // an explicit cast let the compiler understand what we really want
+        System.out.print("However passing a null to of() could lead to unexpected behavior: ");
         Stream.of((String) null).forEach(System.out::println);
         System.out.println("---");
 
         // ofNullable() is safer albeit limited to 0/1 elements
-        System.out.print("Passing a 'good' element to ofNullable():");
+        System.out.print("Passing a 'good' element to ofNullable(): ");
         Stream.ofNullable("Hello").forEach(System.out::println);
         System.out.print("Passing a null to ofNullable() generates an empty stream");
         Stream.ofNullable(null).forEach(System.out::println);
