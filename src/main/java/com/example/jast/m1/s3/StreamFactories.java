@@ -12,20 +12,36 @@ import java.util.stream.Stream;
  */
 public class StreamFactories {
     public static void main(String[] args) {
-        System.out.println("Print each element in the stream of 12, 34, 2");
-        Stream.of(12, 34, 2).forEach(System.out::println);
-        System.out.println("---");
-
+        // empty()
         System.out.println("An empty stream performs no processing!");
         Stream.empty().forEach(System.out::println);
         System.out.println("---");
 
-        String[] elements = { "Hello", null };
-        for (String element : elements) {
-            System.out.println("A nullable stream has one or no elements:");
-            Stream<String> stream = Stream.ofNullable(element);
-            stream.forEach(System.out::println);
-            System.out.println("---");
-        }
+        // of() with no arguments
+        System.out.println("Passing no argument to of() generates an empty stream");
+        Stream.of().forEach(System.out::println);
+        System.out.println("---");
+
+        // of() plain usage
+        System.out.println("Usually 1+ arguments are passed to of():");
+        Stream.of(12, 34).forEach(System.out::println);
+        System.out.println("---");
+
+        // of() with nulls among parameters (dangerous)
+        System.out.println("Passing a null among the arguments to of() is legal but dangerous:");
+        Stream.of(null, 12).forEach(System.out::println);
+        System.out.println("---");
+
+        // of() with a single null could be tricky (and dangerous)
+        // an explicit cast helps the compiler understand what we really want
+        System.out.println("Passing only a null to of() could lead to unexpected behavior:");
+        Stream.of((String) null).forEach(System.out::println);
+        System.out.println("---");
+
+        // ofNullable() is safer albeit limited to 0/1 elements
+        System.out.print("Passing a 'good' element to ofNullable():");
+        Stream.ofNullable("Hello").forEach(System.out::println);
+        System.out.print("Passing a null to ofNullable() generates an empty stream");
+        Stream.ofNullable(null).forEach(System.out::println);
     }
 }
