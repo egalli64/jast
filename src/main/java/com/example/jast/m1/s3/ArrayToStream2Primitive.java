@@ -25,8 +25,14 @@ public class ArrayToStream2Primitive {
         System.out.println("Using a DoubleStream, primitive double stream:");
         double[] doubleValues = { 1.0, 2.0, 3.0 };
         Arrays.stream(doubleValues).forEach(System.out::println);
+        System.out.println("---");
 
         // won't compile: only int, long and double are supported
 //        Arrays.stream(new float[] {});
+
+        // when required, use the boxed type instead
+        System.out.println("Using a Stream<Float>, boxed float stream:");
+        Arrays.stream(new Float[] { 1.0F, 2.0F, 3.0F }).forEach(System.out::println);
+        System.out.println("---");
     }
 }
