@@ -11,9 +11,9 @@ import java.util.List;
 import com.example.jast.dto.bean.DogRaw;
 
 /**
- * Sorting intermediate operations - Using a JavaBean as base class
+ * Sorting intermediate operations - Using a non-comparable JavaBean as base class
  */
-public class SortingRow {
+public class SortingRaw {
     public static void main(String[] args) {
         List<DogRaw> dogs = List.of( //
                 new DogRaw("Bob", "Robert Redford"), //
