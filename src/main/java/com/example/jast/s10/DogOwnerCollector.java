@@ -13,7 +13,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
 
-import com.example.jast.dto.Dog;
+import com.example.jast.dto.rec.Dog;
 
 /**
  * A concrete dog collector

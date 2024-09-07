@@ -1,9 +1,11 @@
 /*
- * Introduction to Stream in Java
+ * Introduction to Functional Programming with Java
  * 
- * https://github.com/egalli64/jast
+ * Module 1 - Stream
+ * 
+ * https://github.com/egalli64/jafun
  */
-package com.example.jast.s05;
+package com.example.jast.m1.s6.rec;
 
 import java.util.Comparator;
 import java.util.List;
@@ -11,8 +13,7 @@ import java.util.List;
 import com.example.jast.dto.rec.Dog;
 
 /**
- * Stateful intermediate sort: standard, by comparator (lambda and
- * Comparator::comparing) - using a record as base class
+ * Sorting intermediate operations - using a record as base class
  */
 public class Sorting {
     public static void main(String[] args) {
@@ -25,15 +26,15 @@ public class Sorting {
         System.out.println("A few dogs: " + dogs);
         System.out.println("---");
 
-        System.out.println("Sort the dogs, then print each of them");
+        System.out.println("Sort the dogs in natural order");
         dogs.stream().sorted().forEach(System.out::println);
         System.out.println("---");
 
-        System.out.println("Sort the dogs by owner, then print each of them");
+        System.out.println(" by owner");
         dogs.stream().sorted((l, r) -> l.owner().compareTo(r.owner())).forEach(System.out::println);
         System.out.println("---");
 
-        System.out.println("Sort the dogs by owner using Comparator.comparing(), then print each of them");
+        System.out.println(" by owner using Comparator.comparing()");
         dogs.stream().sorted(Comparator.comparing(Dog::owner)).forEach(System.out::println);
         System.out.println("---");
     }

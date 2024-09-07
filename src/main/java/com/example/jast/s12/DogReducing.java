@@ -8,7 +8,7 @@ package com.example.jast.s12;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.example.jast.dto.DogExt;
+import com.example.jast.dto.rec.DogExt;
 
 /**
  * Working with specialized reducing collectors

@@ -8,7 +8,7 @@ package com.example.jast.s10;
 import java.util.List;
 import java.util.Set;
 
-import com.example.jast.dto.Dog;
+import com.example.jast.dto.rec.Dog;
 
 /**
  * Collecting using a specialized collector

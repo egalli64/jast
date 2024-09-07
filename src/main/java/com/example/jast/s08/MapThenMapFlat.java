@@ -8,7 +8,7 @@ package com.example.jast.s08;
 import java.util.Arrays;
 import java.util.List;
 
-import com.example.jast.dto.Dog;
+import com.example.jast.dto.rec.Dog;
 
 /**
  * Using the map and flat map intermediate operations to transform data

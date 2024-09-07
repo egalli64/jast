@@ -12,8 +12,8 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import com.example.jast.dto.DogExt;
 import com.example.jast.dto.Weight;
+import com.example.jast.dto.rec.DogExt;
 
 /**
  * Partitioning examples on user record
