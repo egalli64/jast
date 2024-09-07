@@ -3,21 +3,21 @@
  * 
  * https://github.com/egalli64/jast
  */
-package com.example.jast.dto;
+package com.example.jast.dto.bean;
 
 import java.util.Objects;
 
 /**
- * Legacy (before JDK 14) comparable dog, name first, then owner
+ * A legacy comparable dog, name first, then owner
  */
-public class DogBean implements Comparable<DogBean> {
+public class Dog implements Comparable<Dog> {
     private String name;
     private String owner;
 
-    public DogBean() {
+    public Dog() {
     }
 
-    public DogBean(String name, String owner) {
+    public Dog(String name, String owner) {
         this.name = name;
         this.owner = owner;
     }
@@ -39,7 +39,7 @@ public class DogBean implements Comparable<DogBean> {
     }
 
     @Override
-    public int compareTo(DogBean other) {
+    public int compareTo(Dog other) {
         if (this == other) {
             return 0;
         }
@@ -63,12 +63,12 @@ public class DogBean implements Comparable<DogBean> {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        DogBean other = (DogBean) obj;
+        Dog other = (Dog) obj;
         return Objects.equals(name, other.name) && Objects.equals(owner, other.owner);
     }
 
     @Override
     public String toString() {
-        return "DogBean [name=" + name + ", owner=" + owner + "]";
+        return "Dog [name=" + name + ", owner=" + owner + "]";
     }
 }

@@ -8,24 +8,25 @@ package com.example.jast.s08;
 import java.util.Comparator;
 import java.util.List;
 
-import com.example.jast.dto.DogBean;
+import com.example.jast.dto.bean.Dog;
+
 
 /**
  * Using the map intermediate operation to transform data - working on JavaBeans
  */
 public class MapBean {
     public static void main(String[] args) {
-        List<DogBean> dogs = List.of( //
-                new DogBean("Bob", "Robert Redford"), //
-                new DogBean("Zip", "Val Kilmer"), //
-                new DogBean("Red", "Robert Redford"), //
-                new DogBean("Zip", "Andrew Scott"), //
-                new DogBean("Fido", "Andrew Scott") //
+        List<Dog> dogs = List.of( //
+                new Dog("Bob", "Robert Redford"), //
+                new Dog("Zip", "Val Kilmer"), //
+                new Dog("Red", "Robert Redford"), //
+                new Dog("Zip", "Andrew Scott"), //
+                new Dog("Fido", "Andrew Scott") //
         );
         System.out.println("Stream on a list of dogs: " + dogs);
 
         System.out.println("\nMap each dog to its owner, discard duplicates, print:");
-        dogs.stream().map(DogBean::getOwner).distinct().forEach(System.out::println);
+        dogs.stream().map(Dog::getOwner).distinct().forEach(System.out::println);
 
         System.out.println("\nMap dogs to their distinct owner name lengths, reverse order, print:");
         dogs.stream().map(dog -> dog.getOwner().length()).distinct() //

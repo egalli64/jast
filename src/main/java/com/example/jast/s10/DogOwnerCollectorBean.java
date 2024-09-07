@@ -13,19 +13,19 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
 
-import com.example.jast.dto.DogBean;
+import com.example.jast.dto.bean.Dog;
 
 /**
  * A concrete dog collector (using JavaBean)
  */
-public class DogOwnerCollectorBean implements Collector<DogBean, Set<String>, Set<String>> {
+public class DogOwnerCollectorBean implements Collector<Dog, Set<String>, Set<String>> {
     @Override
     public Supplier<Set<String>> supplier() {
         return HashSet::new;
     }
 
     @Override
-    public BiConsumer<Set<String>, DogBean> accumulator() {
+    public BiConsumer<Set<String>, Dog> accumulator() {
         return (list, dog) -> list.add(dog.getOwner());
     }
 

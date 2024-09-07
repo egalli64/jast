@@ -3,19 +3,19 @@
  * 
  * https://github.com/egalli64/jast
  */
-package com.example.jast.dto;
+package com.example.jast.dto.bean;
 
 /**
  * Legacy (before JDK 14) comparable dog with extra info
  */
-public class DogExtBean extends DogBean {
+public class DogExt extends com.example.jast.dto.bean.Dog {
     private int age;
     private double weight;
 
-    public DogExtBean() {
+    public DogExt() {
     }
 
-    public DogExtBean(String name, String owner, int age, double weight) {
+    public DogExt(String name, String owner, int age, double weight) {
         super(name, owner);
         this.age = age;
         this.weight = weight;

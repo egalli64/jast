@@ -8,19 +8,19 @@ package com.example.jast.s10;
 import java.util.List;
 import java.util.Set;
 
-import com.example.jast.dto.DogBean;
+import com.example.jast.dto.bean.Dog;
 
 /**
  * Collecting using a specialized collector (JavaBean based)
  */
 public class MainBean {
     public static void main(String[] args) {
-        List<DogBean> dogs = List.of( //
-                new DogBean("Bob", "Robert Redford"), //
-                new DogBean("Zip", "Val Kilmer"), //
-                new DogBean("Red", "Robert Redford"), //
-                new DogBean("Zip", "Andrew Scott"), //
-                new DogBean("Fido", "Andrew Scott") //
+        List<Dog> dogs = List.of( //
+                new Dog("Bob", "Robert Redford"), //
+                new Dog("Zip", "Val Kilmer"), //
+                new Dog("Red", "Robert Redford"), //
+                new Dog("Zip", "Andrew Scott"), //
+                new Dog("Fido", "Andrew Scott") //
         );
 
         System.out.println("Dogs are: " + dogs);
