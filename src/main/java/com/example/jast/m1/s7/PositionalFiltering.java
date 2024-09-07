@@ -15,15 +15,12 @@ public class PositionalFiltering {
         List<Integer> values = List.of(1, 3, 2, 1, 5, 2);
         System.out.println("Original data: " + values);
 
-        System.out.println("filter() the even values:");
-        values.stream().filter(x -> x % 2 == 0).forEach(System.out::println);
+        System.out.println("limit() size to 2:");
+        values.stream().limit(2).forEach(System.out::println);
         System.out.println();
 
-        System.out.println("filterWhile() odd values, drop from the first even value on:");
-        values.stream().takeWhile(x -> x % 2 != 0).forEach(System.out::println);
+        System.out.println("skip() the first 4 elements:");
+        values.stream().skip(4).forEach(System.out::println);
         System.out.println();
-
-        System.out.println("dropWhile() odd values, keep from the first even value on:");
-        values.stream().dropWhile(x -> x % 2 != 0).forEach(System.out::println);
     }
 }
