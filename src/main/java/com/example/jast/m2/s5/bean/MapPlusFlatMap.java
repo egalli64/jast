@@ -25,8 +25,7 @@ public class MapPlusFlatMap {
         System.out.print("Characters used in their owner names are >");
         dogs.stream() //
                 .map(Dog::getOwner) //
-                .map(s -> s.split("")) //
-                .flatMap(Arrays::stream) //
+                .flatMap(s -> Arrays.stream(s.split(""))) //
                 .map(String::toLowerCase) //
                 .distinct() //
                 .sorted() //
