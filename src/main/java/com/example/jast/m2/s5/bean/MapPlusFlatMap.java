@@ -3,7 +3,7 @@
  * 
  * https://github.com/egalli64/jast
  */
-package com.example.jast.s08;
+package com.example.jast.m2.s5.bean;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,10 +11,9 @@ import java.util.List;
 import com.example.jast.dto.bean.Dog;
 
 /**
- * Using the map and flat map intermediate operations to transform data - using
- * JavaBeans
+ * Using map and flat map intermediate operations on records
  */
-public class MapThenMapFlatBean {
+public class MapPlusFlatMap {
     public static void main(String[] args) {
         List<Dog> dogs = List.of( //
                 new Dog("Bob", "Robert Redford"), //
@@ -23,10 +22,15 @@ public class MapThenMapFlatBean {
         );
         System.out.println("Dogs are: " + dogs);
 
-        System.out.print("Map dogs to owner characters, lower case, ordered, no duplicates >");
-        dogs.stream().map(Dog::getOwner).map(s -> s.split("")) //
-                .flatMap(Arrays::stream).map(String::toLowerCase) //
-                .sorted().distinct().forEach(System.out::print);
+        System.out.print("Characters used in their owner names are >");
+        dogs.stream() //
+                .map(Dog::getOwner) //
+                .map(s -> s.split("")) //
+                .flatMap(Arrays::stream) //
+                .map(String::toLowerCase) //
+                .distinct() //
+                .sorted() //
+                .forEach(System.out::print);
         System.out.println('<');
     }
 }

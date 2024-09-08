@@ -3,14 +3,14 @@
  * 
  * https://github.com/egalli64/jast
  */
-package com.example.jast.s08;
+package com.example.jast.m2.s5.bean;
 
 import java.util.List;
 
 /**
  * Flat map to generate a Cartesian product
  */
-public class MapFlatCartesian {
+public class MappingFlatCartesian {
     public static void main(String[] args) {
         List<Integer> li1 = List.of(4, 45, 18);
         System.out.println("list one: " + li1);
@@ -19,11 +19,28 @@ public class MapFlatCartesian {
         System.out.println("list two: " + li2);
         System.out.println("---");
 
-        System.out.println("Cartesian product");
+        System.out.println("Cartesian product (to JavaBean):");
         li1.stream().sorted() //
                 .flatMap(i -> li2.stream().sorted().map(j -> new Pair(i, j))) //
                 .forEach(System.out::println);
         System.out.println("---");
     }
 
+    /**
+     * A two-integer tuple as JavaBean stub
+     */
+    private static class Pair {
+        private int first;
+        private int second;
+
+        public Pair(int first, int second) {
+            this.first = first;
+            this.second = second;
+        }
+
+        @Override
+        public String toString() {
+            return "Pair [first=" + first + ", second=" + second + "]";
+        }
+    }
 }
