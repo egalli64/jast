@@ -3,7 +3,7 @@
  * 
  * https://github.com/egalli64/jast
  */
-package com.example.jast.s10;
+package com.example.jast.m3.s2.rec;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,7 +16,7 @@ import java.util.stream.Collector;
 import com.example.jast.dto.rec.Dog;
 
 /**
- * A concrete dog collector
+ * A concrete dog (record) collector for the dog owners
  */
 public class DogOwnerCollector implements Collector<Dog, Set<String>, Set<String>> {
     @Override
@@ -39,9 +39,7 @@ public class DogOwnerCollector implements Collector<Dog, Set<String>, Set<String
 
     @Override
     public Function<Set<String>, Set<String>> finisher() {
-        // actually, the finisher should not be invoked, given the IDENTITY_FINISH
-        // characteristic
-        return Function.identity();
+        throw new UnsupportedOperationException("IDENTITY_FINISH characteristic expected");
     }
 
     @Override

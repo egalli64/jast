@@ -3,7 +3,7 @@
  * 
  * https://github.com/egalli64/jast
  */
-package com.example.jast.s10;
+package com.example.jast.m3.s2.rec;
 
 import java.util.List;
 import java.util.Set;
@@ -11,9 +11,9 @@ import java.util.Set;
 import com.example.jast.dto.rec.Dog;
 
 /**
- * Collecting using a specialized collector
+ * Using the collect terminal with a specialized Collector (on records)
  */
-public class Main {
+public class Collecting {
     public static void main(String[] args) {
         List<Dog> dogs = List.of( //
                 new Dog("Bob", "Robert Redford"), //
@@ -24,10 +24,7 @@ public class Main {
         );
 
         System.out.println("Dogs are: " + dogs);
-        System.out.println("---");
-
         Set<String> owners = dogs.stream().collect(new DogOwnerCollector());
         System.out.println("Owners are: " + owners);
-        System.out.println("---");
     }
 }
