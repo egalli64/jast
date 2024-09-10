@@ -3,7 +3,7 @@
  * 
  * https://github.com/egalli64/jast
  */
-package com.example.jast.s09;
+package com.example.jast.m2.s5;
 
 import java.util.List;
 
