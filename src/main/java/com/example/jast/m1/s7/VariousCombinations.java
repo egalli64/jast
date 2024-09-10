@@ -3,14 +3,14 @@
  * 
  * https://github.com/egalli64/jast
  */
-package com.example.jast.s05;
+package com.example.jast.m1.s7;
 
 import java.util.List;
 
 import java.util.Comparator;
 
 /**
- * Mixing stateful operators
+ * Mixing operators
  */
 public class VariousCombinations {
     public static void main(String[] args) {
