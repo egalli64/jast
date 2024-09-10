@@ -40,7 +40,7 @@ public class Grouping {
         System.out.println("---");
 
         System.out.println("Grouping by owner");
-        var groupedByOwner = dogs.stream().collect(Collectors.groupingBy(DogExt::owner));
+        var groupedByOwner = dogs.stream().collect(Collectors.groupingBy(x -> x.dog().owner()));
         for (var entry : groupedByOwner.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
@@ -56,7 +56,7 @@ public class Grouping {
         // filter then grouping
         System.out.println("Filtering the young ones then grouping by owner");
         Map<String, List<DogExt>> youngDogsByOwner = dogs.stream().filter(isYoung) //
-                .collect(Collectors.groupingBy(DogExt::owner));
+                .collect(Collectors.groupingBy(x -> x.dog().owner()));
         for (var entry : youngDogsByOwner.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
@@ -65,7 +65,8 @@ public class Grouping {
         // grouping then filtering
         System.out.println("Grouping by owner then filtering the young ones");
         Map<String, List<DogExt>> youngDogsByAllOwner = dogs.stream() //
-                .collect(Collectors.groupingBy(DogExt::owner, Collectors.filtering(isYoung, Collectors.toList())));
+                .collect(Collectors.groupingBy(x -> x.dog().owner(),
+                        Collectors.filtering(isYoung, Collectors.toList())));
         for (var entry : youngDogsByAllOwner.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
@@ -73,13 +74,13 @@ public class Grouping {
 
         // grouping and counting
         Map<String, Long> countDogsByOwner = dogs.stream()
-                .collect(Collectors.groupingBy(DogExt::owner, Collectors.counting()));
+                .collect(Collectors.groupingBy(x -> x.dog().owner(), Collectors.counting()));
         System.out.println("Counting dogs by owner: " + countDogsByOwner);
         System.out.println("---");
 
         // grouping then grouping
         Map<String, Map<Weight, List<DogExt>>> dogsByOwnerAndWeight = dogs.stream()
-                .collect(Collectors.groupingBy(DogExt::owner, Collectors.groupingBy(dogWeight)));
+                .collect(Collectors.groupingBy(x -> x.dog().owner(), Collectors.groupingBy(dogWeight)));
         System.out.println("Dogs by owner and weight: " + dogsByOwnerAndWeight);
 
         // partitioning
