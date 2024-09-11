@@ -39,6 +39,6 @@ public class DogExt extends com.example.jast.dto.bean.Dog {
 
     @Override
     public String toString() {
-        return "DogExtBean [name=" + getName() + ", owner=" + getOwner() + "age=" + age + ", weight=" + weight + "]";
+        return "DogExtBean [name=" + getName() + ", owner=" + getOwner() + ", age=" + age + ", weight=" + weight + "]";
     }
 }
