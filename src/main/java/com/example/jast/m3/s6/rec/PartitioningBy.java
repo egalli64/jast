@@ -3,7 +3,7 @@
  * 
  * https://github.com/egalli64/jast
  */
-package com.example.jast.s14;
+package com.example.jast.m3.s6.rec;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,14 +13,14 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import com.example.jast.dto.Weight;
-import com.example.jast.dto.bean.DogExt;
+import com.example.jast.dto.rec.DogExt;
 
 /**
- * Partitioning examples on user JavaBaean
+ * Using Collectors.partitioningBy on records
  */
-public class PartitioningBean {
+public class PartitioningBy {
     private static final Function<DogExt, Weight> dogWeight = dog -> {
-        double current = dog.getWeight();
+        double current = dog.weight();
         if (current < 3) {
             return Weight.LIGHT;
         } else if (current < 10) {
@@ -30,7 +30,7 @@ public class PartitioningBean {
         }
     };
 
-    private static final Predicate<DogExt> isYoung = dog -> dog.getAge() < 5;
+    private static final Predicate<DogExt> isYoung = dog -> dog.age() < 5;
 
     public static void main(String[] args) {
         DogExt[] dogs = { //
@@ -42,11 +42,13 @@ public class PartitioningBean {
         System.out.println("Dogs: " + Arrays.toString(dogs));
 
         // partitioning
-        Map<Boolean, List<DogExt>> dogsByAge = Arrays.stream(dogs).collect(Collectors.partitioningBy(isYoung));
+        Map<Boolean, List<DogExt>> dogsByAge = Arrays.stream(dogs) //
+                .collect(Collectors.partitioningBy(isYoung));
         System.out.println("Dogs partitioned by age: " + dogsByAge);
 
         // just filtering
-        System.out.println("Only young dogs: " + Arrays.stream(dogs).filter(isYoung).collect(Collectors.toList()));
+        System.out.println("Only young dogs: " + Arrays.stream(dogs) //
+                .filter(isYoung).collect(Collectors.toList()));
 
         // partitioning then grouping
         Map<Boolean, Map<Weight, List<DogExt>>> dogsByKimNameAndOwner = Arrays.stream(dogs)

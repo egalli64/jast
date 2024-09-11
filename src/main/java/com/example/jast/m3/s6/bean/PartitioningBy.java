@@ -3,7 +3,7 @@
  * 
  * https://github.com/egalli64/jast
  */
-package com.example.jast.s14;
+package com.example.jast.m3.s6.bean;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,26 +13,26 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import com.example.jast.dto.Weight;
-import com.example.jast.dto.rec.DogExt;
+import com.example.jast.dto.bean.DogExt;
 
 /**
- * Partitioning examples on user record
+ * Using Collectors.partitioningBy on JavaBeans
  */
-public class Partitioning {
+public class PartitioningBy {
     private static final Function<DogExt, Weight> dogWeight = dog -> {
-        double current = dog.weight();
+        double current = dog.getWeight();
         if (current < 3) {
             return Weight.LIGHT;
         } else if (current < 10) {
             return Weight.MEDIUM;
         } else {
             return Weight.HEAVY;
-        }        
+        }
     };
 
-    private static final Predicate<DogExt> isYoung = dog -> dog.age() < 5;
+    private static final Predicate<DogExt> isYoung = dog -> dog.getAge() < 5;
 
-    public static void main(String[] args) {        
+    public static void main(String[] args) {
         DogExt[] dogs = { //
                 new DogExt("Bob", "Tom Hanks", 7, 12.5), //
                 new DogExt("Tom", "Bob Marley", 5, 4.3), //
@@ -42,11 +42,13 @@ public class Partitioning {
         System.out.println("Dogs: " + Arrays.toString(dogs));
 
         // partitioning
-        Map<Boolean, List<DogExt>> dogsByAge = Arrays.stream(dogs).collect(Collectors.partitioningBy(isYoung));
+        Map<Boolean, List<DogExt>> dogsByAge = Arrays.stream(dogs) //
+                .collect(Collectors.partitioningBy(isYoung));
         System.out.println("Dogs partitioned by age: " + dogsByAge);
 
         // just filtering
-        System.out.println("Only young dogs: " + Arrays.stream(dogs).filter(isYoung).collect(Collectors.toList()));
+        System.out.println("Only young dogs: " + Arrays.stream(dogs) //
+                .filter(isYoung).collect(Collectors.toList()));
 
         // partitioning then grouping
         Map<Boolean, Map<Weight, List<DogExt>>> dogsByKimNameAndOwner = Arrays.stream(dogs)
