@@ -3,7 +3,7 @@
  * 
  * https://github.com/egalli64/jast
  */
-package com.example.jast.s13;
+package com.example.jast.m3.s5.rec;
 
 import java.util.List;
 import java.util.Map;
@@ -12,14 +12,14 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import com.example.jast.dto.Weight;
-import com.example.jast.dto.bean.DogExt;
+import com.example.jast.dto.rec.DogExt;
 
 /**
- * Grouping on user bean
+ * Using Collectors.groupingBy on records
  */
-public class GroupingBean {
+public class Grouping {
     private static final Function<DogExt, Weight> dogWeight = dog -> {
-        double current = dog.getWeight();
+        double current = dog.weight();
         if (current < 3) {
             return Weight.LIGHT;
         } else if (current < 10) {
@@ -29,7 +29,7 @@ public class GroupingBean {
         }
     };
 
-    private static final Predicate<DogExt> isYoung = dog -> dog.getAge() < 5;
+    private static final Predicate<DogExt> isYoung = dog -> dog.age() < 5;
 
     public static void main(String[] args) {
         List<DogExt> dogs = List.of( //
@@ -40,7 +40,8 @@ public class GroupingBean {
         System.out.println("---");
 
         System.out.println("Grouping by owner");
-        var groupedByOwner = dogs.stream().collect(Collectors.groupingBy(DogExt::getOwner));
+        var groupedByOwner = dogs.stream().collect( //
+                Collectors.groupingBy(d -> d.dog().owner()));
         for (var entry : groupedByOwner.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
@@ -56,7 +57,7 @@ public class GroupingBean {
         // filter then grouping
         System.out.println("Filtering the young ones then grouping by owner");
         Map<String, List<DogExt>> youngDogsByOwner = dogs.stream().filter(isYoung) //
-                .collect(Collectors.groupingBy(DogExt::getOwner));
+                .collect(Collectors.groupingBy(d -> d.dog().owner()));
         for (var entry : youngDogsByOwner.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
@@ -65,7 +66,8 @@ public class GroupingBean {
         // grouping then filtering
         System.out.println("Grouping by owner then filtering the young ones");
         Map<String, List<DogExt>> youngDogsByAllOwner = dogs.stream() //
-                .collect(Collectors.groupingBy(DogExt::getOwner,
+                .collect(Collectors.groupingBy( //
+                        d -> d.dog().owner(), //
                         Collectors.filtering(isYoung, Collectors.toList())));
         for (var entry : youngDogsByAllOwner.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
@@ -74,13 +76,13 @@ public class GroupingBean {
 
         // grouping and counting
         Map<String, Long> countDogsByOwner = dogs.stream()
-                .collect(Collectors.groupingBy(DogExt::getOwner, Collectors.counting()));
+                .collect(Collectors.groupingBy(d -> d.dog().owner(), Collectors.counting()));
         System.out.println("Counting dogs by owner: " + countDogsByOwner);
         System.out.println("---");
 
         // grouping then grouping
         Map<String, Map<Weight, List<DogExt>>> dogsByOwnerAndWeight = dogs.stream()
-                .collect(Collectors.groupingBy(DogExt::getOwner, Collectors.groupingBy(dogWeight)));
+                .collect(Collectors.groupingBy(d -> d.dog().owner(), Collectors.groupingBy(dogWeight)));
         System.out.println("Dogs by owner and weight: " + dogsByOwnerAndWeight);
 
         // partitioning
